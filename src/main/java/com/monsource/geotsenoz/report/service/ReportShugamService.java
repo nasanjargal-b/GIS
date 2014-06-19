@@ -14,7 +14,7 @@ import java.util.List;
  * Created by nasanjargal on 6/11/14.
  */
 @Service
-public class ShugamService {
+public class ReportShugamService {
     @Autowired
     ShugamHooloiDao shugamHooloiDao;
 

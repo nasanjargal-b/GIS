@@ -2,13 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/app/**" location="/app/"/>
 
+    <context:component-scan base-package="com.monsource.geotsenoz.core.exception"/>
     <context:component-scan
             base-package="com.monsource.geotsenoz.report.controller,com.monsource.geotsenoz.report.service"/>
+    <context:component-scan
+            base-package="com.monsource.geotsenoz.aimag.controller,com.monsource.geotsenoz.aimag.service"/>
+    <context:component-scan
+            base-package="com.monsource.geotsenoz.hudag.controller,com.monsource.geotsenoz.hudag.service"/>
 
 
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
@@ -17,6 +23,10 @@
                 <constructor-arg type="java.lang.String" value="yyyy-MM-dd"></constructor-arg>
             </bean>
         </property>
+    </bean>
+
+    <bean id="aimagSelected" class="com.monsource.geotsenoz.aimag.model.AimagSelectedSession" scope="session">
+        <aop:scoped-proxy/>
     </bean>
 
     <mvc:annotation-driven>

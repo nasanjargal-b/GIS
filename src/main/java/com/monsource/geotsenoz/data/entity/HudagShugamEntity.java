@@ -28,6 +28,7 @@ public class HudagShugamEntity implements DataEntity {
 
     @Id
     @Column(name = "hudag_shugam_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getHudagShugamId() {
         return hudagShugamId;
     }

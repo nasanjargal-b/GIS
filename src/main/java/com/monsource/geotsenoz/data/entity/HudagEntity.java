@@ -34,6 +34,7 @@ public class HudagEntity implements DataEntity {
 
     @Id
     @Column(name = "hudag_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getHudagId() {
         return hudagId;
     }
@@ -235,7 +236,7 @@ public class HudagEntity implements DataEntity {
         this.tag = tag;
     }
 
-    @OneToMany(mappedBy = "hudag")
+    @OneToMany(mappedBy = "hudag",orphanRemoval = true,cascade = CascadeType.ALL)
     public Set<HudagShugamEntity> getHudagShugams() {
         return hudagShugams;
     }

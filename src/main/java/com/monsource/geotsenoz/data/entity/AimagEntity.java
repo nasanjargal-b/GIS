@@ -1,5 +1,6 @@
 package com.monsource.geotsenoz.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.monsource.geotsenoz.core.data.DataEntity;
 
 import javax.persistence.*;
@@ -56,6 +57,7 @@ public class AimagEntity implements DataEntity {
         return result;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "aimag")
     public Set<HudagEntity> getHudags() {
         return hudags;
@@ -65,6 +67,7 @@ public class AimagEntity implements DataEntity {
         this.hudags = hudags;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "aimag")
     public Set<ShugamHooloiEntity> getShugamHoolois() {
         return shugamHoolois;

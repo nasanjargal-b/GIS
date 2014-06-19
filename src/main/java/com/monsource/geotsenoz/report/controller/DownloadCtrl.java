@@ -4,9 +4,8 @@ import com.monsource.geotsenoz.data.dao.AimagDao;
 import com.monsource.geotsenoz.data.entity.AimagEntity;
 import com.monsource.geotsenoz.report.excel.HudagWorkbook;
 import com.monsource.geotsenoz.report.excel.ShugamWorkbook;
-import com.monsource.geotsenoz.report.service.HudagService;
-import com.monsource.geotsenoz.report.service.ShugamService;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import com.monsource.geotsenoz.report.service.ReportHudagService;
+import com.monsource.geotsenoz.report.service.ReportShugamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,16 +24,16 @@ public class DownloadCtrl {
     @Autowired
     AimagDao aimagDao;
     @Autowired
-    HudagService hudagService;
+    ReportHudagService reportHudagService;
     @Autowired
-    ShugamService shugamService;
+    ReportShugamService reportShugamService;
 
     @RequestMapping(value = "hudag.xlsx", method = RequestMethod.GET)
     public void downloadHudag(Integer aimagId, HttpServletResponse response) throws IOException {
 
         AimagEntity aimag = aimagDao.get(aimagId);
 
-        HudagWorkbook hudagWorkbook = hudagService.getHudagWorkbook(aimag);
+        HudagWorkbook hudagWorkbook = reportHudagService.getHudagWorkbook(aimag);
 
         response.setContentType("application/xlsx");
         response.setHeader("Content-Disposition", "attachment; filename=" + aimag.getAimagName() + "_худаг.xlsx");
@@ -47,7 +46,7 @@ public class DownloadCtrl {
 
         AimagEntity aimag = aimagDao.get(aimagId);
 
-        ShugamWorkbook hudagWorkbook = shugamService.getShugamWorkbook(aimag);
+        ShugamWorkbook hudagWorkbook = reportShugamService.getShugamWorkbook(aimag);
 
         response.setContentType("application/xlsx");
         response.setHeader("Content-Disposition", "attachment; filename=" + aimag.getAimagName() + "_худаг.xlsx");

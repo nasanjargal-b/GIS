@@ -19,8 +19,8 @@ import java.util.Locale;
 @Controller
 public class ExceptionController {
 
-    @Autowired
-    ResourceBundleMessageSource resourceBundle;
+    /*@Autowired
+    ResourceBundleMessageSource resourceBundle;*/
     @Autowired
     ObjectMapper objectMapper;
 
@@ -31,9 +31,9 @@ public class ExceptionController {
 
         Locale locale = LocaleContextHolder.getLocale();
 
-        JsonData jsonData = null;
+        JsonData jsonData = new JsonData(ex.getMessage());
 
-        if (ex instanceof BaseException) {
+        /*if (ex instanceof BaseException) {
             BaseException e = (BaseException) ex;
             jsonData = new JsonData(false, resourceBundle.getMessage("core." + e.getClass().getSimpleName(), e.getParams(), locale));
         } else {
@@ -52,7 +52,7 @@ public class ExceptionController {
                 jsonData = new JsonData(false, resourceBundle.getMessage("core.Exception", new Object[]{ex.getMessage()}, locale));
             }
 
-        }
+        }*/
 
 
         ex.printStackTrace();
