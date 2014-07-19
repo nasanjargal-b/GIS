@@ -64,6 +64,50 @@ Ext.define('App.view.MainMenu', {
                     });
                 }
             }
-        })
+        }),
+        {
+            text: 'Excel дата татах',
+            menu: [
+                {
+                    text: 'Худаг',
+                    listeners: {
+                        click: function () {
+                            Ext.Ajax.request({
+                                url: 'aimag/aimagCheck.json',
+                                method: 'POST',
+                                success: function (response) {
+                                    var id = Ext.decode(response.responseText);
+                                    if (id.data != null)
+                                        location.href = "/report/download/hudag.xlsx?aimagId=" + id.data.aimagId
+                                    else
+                                        Ext.MessageBox.alert("Алдаа", "Та аймагаа сонгох ёстой");
+                                }
+                            });
+
+                        }
+                    }
+                },
+                {
+                    text: 'Шугам',
+                    action: 'shugamData',
+                    listeners: {
+                        click: function () {
+                            Ext.Ajax.request({
+                                url: 'aimag/aimagCheck.json',
+                                method: 'POST',
+                                success: function (response) {
+                                    var id = Ext.decode(response.responseText);
+                                    if (id.data != null)
+                                        location.href = "/report/download/shugam.xlsx?aimagId=" + id.data.aimagId
+                                    else
+                                        Ext.MessageBox.alert("Алдаа", "Та аймагаа сонгох ёстой");
+                                }
+                            });
+
+                        }
+                    }
+                }
+            ]
+        }
     ]
 });
