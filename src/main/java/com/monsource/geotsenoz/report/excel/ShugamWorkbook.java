@@ -116,12 +116,12 @@ public class ShugamWorkbook extends XSSFWorkbook {
         }
 
         if (eGaz == 0 && eHo == 0) {
-            eGaz = tHo;
+            eGaz = tGaz;
             eHo = tHo;
         }
 
         if (tGaz == 0 && tHo == 0) {
-            tGaz = eHo;
+            tGaz = eGaz;
             tHo = eHo;
         }
 
