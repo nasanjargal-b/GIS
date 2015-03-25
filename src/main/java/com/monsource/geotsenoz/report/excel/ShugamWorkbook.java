@@ -78,8 +78,8 @@ public class ShugamWorkbook extends XSSFWorkbook {
             row.createCell(i + 1).setCellValue(shugamHooloi.getEhHudag().getDugaar() + zugBo);
             row.createCell(i + 2).setCellValue(shugamHooloi.getTugsHudag().getDugaar() + zugTd);
 
-            if (shugamHooloi.getEhHudagShugam().getDiameter() != null)
-                row.createCell(i + 3).setCellValue(Integer.valueOf(integerFormat.format(shugamHooloi.getEhHudagShugam().getDiameter())));
+            if (shugamHooloi.getDiameter() != null)
+                row.createCell(i + 3).setCellValue(Integer.valueOf(integerFormat.format(shugamHooloi.getDiameter())));
             if (shugamHooloi.getEhHudagShugam().getToo() != null)
                 row.createCell(i + 4).setCellValue(shugamHooloi.getEhHudagShugam().getToo());
 
